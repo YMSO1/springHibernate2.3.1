@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
     private final UserRepository repository;
 
@@ -20,11 +19,13 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<User> index() {
         return repository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User show(int id) {
         Optional<User> foundUser = repository.findById(id);
         return foundUser.orElse(null);
