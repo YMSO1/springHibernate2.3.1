@@ -19,13 +19,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<User> index() {
         return repository.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public User show(int id) {
         Optional<User> foundUser = repository.findById(id);
         return foundUser.orElse(null);
